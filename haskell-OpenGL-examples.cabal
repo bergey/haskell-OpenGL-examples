@@ -1,0 +1,21 @@
+name:                haskell-OpenGL-examples
+version:             0.1.0.0
+synopsis:            Comparative examples of OpenGL in Haskell
+description:         These are the examples I wish I had when I started learning OpenGL.  There are more examples in the wild of the deprecated pre-3.0 API than of modern OpenGL, and of course all examples are in C.  The usual assortment of GLUT and other windowing frameworks doesn't help.  These examples (will eventually) cover several different choices of Haskell wrapper over OpenGL---basic OpenGL package, the GLUtil package, and the vinyl-gl package.
+homepage:            http://github.com/bergey/haskell-OpenGL-examples
+license:             BSD3
+license-file:        LICENSE
+author:              Daniel Bergey <bergey@teallabs.org>
+maintainer:          Daniel Bergey <bergey@teallabs.org>
+copyright:           2013 Daniel Bergey
+category:            Graphics
+build-type:          Simple
+cabal-version:       >=1.8
+
+executable triangle-direct
+  main-is:             triangle/direct/Main.hs
+  -- other-modules:       
+  build-depends:       base >= 4 && < 5,
+                       GLFW-b == 1.*,
+                       OpenGL >= 2.8 && < 2.10
+  ghc-options:         -O2 -Wall
