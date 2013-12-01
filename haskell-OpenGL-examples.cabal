@@ -14,7 +14,8 @@ cabal-version:       >=1.8
 
 executable triangle-direct
   main-is:             triangle/direct/Main.hs
-  -- other-modules:       
+  hs-source-dirs:      src, .
+  other-modules:       Util.GLFW
   build-depends:       base >= 4 && < 5,
                        GLFW-b == 1.*,
                        OpenGL >= 2.8 && < 2.10
