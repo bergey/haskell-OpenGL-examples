@@ -19,5 +19,6 @@ Haskell wrapper over OpenGL:
 All examples use GLFW-b for windowing.
 
 The example programs, in order of increasing complexity:
+* red-book-1-1 (Two white 2D triangles)
 * triangle (2D rotating triangle)
 * gears (3D gears, pan, zoom, orbit)
