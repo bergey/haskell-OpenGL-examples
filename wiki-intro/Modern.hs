@@ -12,13 +12,14 @@ import           System.IO
 
 -- Import all OpenGL libraries qualified, for pedagogical reasons
 import qualified Graphics.Rendering.OpenGL as GL
+import qualified Graphics.UI.GLFW as GLFW
 import           Graphics.Rendering.OpenGL (($=))
 
 -- Local modules
 import qualified Util.GLFW as U
 
-vertices :: V.Vector GL.GLfloat
-vertices = V.fromList $ [  0.0,  0.8
+vertices :: V.Vector Float
+vertices = V.fromList [  0.0,  0.8
                       , -0.8, -0.8
                       ,  0.8, -0.8
                       ]
@@ -73,9 +74,13 @@ initResources = do
     GL.attachShader program fs
     GL.linkProgram program
     linkOK <- GL.get $ GL.linkStatus program
-    unless linkOK $ do
+    GL.validateProgram program
+    status <- GL.get $ GL.validateStatus program
+    unless (linkOK && status) $ do
         hPutStrLn stderr "GL.linkProgram error"
         exitFailure
+
+    GL.currentProgram $= Just program
 
     attrs <- GL.get $ GL.activeAttribs program
     case L.find (\(_,_,n) -> n == "coord2d") attrs of
