@@ -84,10 +84,13 @@ initResources = do
             exitFailure
         Just (i,_,_) -> return (program, GL.AttribLocation (fromIntegral i))
 
-draw :: GL.Program -> GL.AttribLocation -> IO ()
-draw program attrib = do
     GL.clearColor $= GL.Color4 1 1 1 1
     GL.clear [GL.ColorBuffer]
+draw :: GL.Program -> GL.AttribLocation -> GLFW.Window -> IO ()
+draw program attrib win = do
+    -- In C++ example GLUT handles this?
+    (width, height) <- GLFW.getFramebufferSize win
+    GL.viewport $= (GL.Position 0 0, GL.Size (fromIntegral width) (fromIntegral height))
     GL.currentProgram $= Just program
     GL.vertexAttribArray attrib $= GL.Enabled
     V.unsafeWith vertices $ \ptr ->
@@ -104,7 +107,7 @@ main = do
     -- GLFW code will be the same in all variants
     win <- U.initialize "My First Triangle"
     (program, attrib) <- initResources
-    U.mainLoop (draw program attrib) win
+    U.mainLoop (draw program attrib win) win
     freeResources
     U.cleanup win
 
