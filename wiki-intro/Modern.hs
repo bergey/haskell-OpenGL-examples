@@ -86,16 +86,13 @@ initResources = do
 
 draw :: GL.Program -> GL.AttribLocation -> IO ()
 draw program attrib = do
-    putStrLn "entering draw"
     GL.clearColor $= GL.Color4 1 1 1 1
     GL.clear [GL.ColorBuffer]
     GL.currentProgram $= Just program
     GL.vertexAttribArray attrib $= GL.Enabled
-    putStrLn "entering unsafeWith"
     V.unsafeWith vertices $ \ptr ->
         GL.vertexAttribPointer attrib $=
           (GL.ToFloat, GL.VertexArrayDescriptor 2 GL.Float 0 ptr)
-    putStrLn "entering drawArrays"
     GL.drawArrays GL.Triangles 0 3 -- 3 is the hardcoded number of vertices
     GL.vertexAttribArray attrib $= GL.Disabled
 
@@ -106,9 +103,7 @@ main :: IO ()
 main = do
     -- GLFW code will be the same in all variants
     win <- U.initialize "My First Triangle"
-    putStrLn "Initialized GLFW"
     (program, attrib) <- initResources
-    putStrLn "Linked Program"
     U.mainLoop (draw program attrib) win
     freeResources
     U.cleanup win
