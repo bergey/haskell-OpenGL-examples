@@ -12,17 +12,8 @@ category:            Graphics
 build-type:          Simple
 cabal-version:       >=1.8
 
-executable triangle-direct
-  main-is:             triangle/direct/Main.hs
-  hs-source-dirs:      src, .
-  other-modules:       Util.GLFW
-  build-depends:       base >= 4 && < 5,
-                       GLFW-b == 1.*,
-                       OpenGL >= 2.8 && < 2.10
-  ghc-options:         -O2 -Wall
-
-executable red-book-1-1-modern
-  main-is:             red-book-1-1/Modern.hs
+executable wiki-intro-modern
+  main-is:             wiki-intro/Modern.hs
   hs-source-dirs:      src, .
   other-modules:       Util.GLFW
   build-depends:       base >= 4 && < 5,
@@ -31,26 +22,3 @@ executable red-book-1-1-modern
                        vector >= 0.9 && < 0.11,
                        bytestring >= 0.10 && < 0.11
   ghc-options:         -O2 -Wall
-
-executable red-book-1-1-GLUtil
-  main-is:             red-book-1-1/GLUtil.hs
-  hs-source-dirs:      src, .
-  other-modules:       Util.GLFW
-  build-depends:       base >= 4 && < 5,
-                       GLFW-b == 1.*,
-                       OpenGL >= 2.9 && < 2.10,
-                       vector >= 0.9 && < 0.11,
-                       GLUtil >= 0.7
-  ghc-options:         -O2 -Wall
-
-
--- executable scroller-GLUtil
---   main-is:             scroller/GLUtil/Main.lhs
---   hs-source-dirs:      src, .
---   other-modules:       Util.GLFW
---   build-depends:       base >= 4 && < 5,
---                        GLFW-b == 1.*,
---                        OpenGL >= 2.9 && < 2.10,
---                        vector >= 0.9 && < 0.11,
---                        GLUtil >= 0.7
---   ghc-options:         -O2 -Wall
