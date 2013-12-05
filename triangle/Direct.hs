@@ -15,11 +15,14 @@ module Main where
 import Graphics.Rendering.OpenGL
 import qualified Graphics.UI.GLFW as GLFW
 
-import Util.GLFW (mainWith)
+import qualified Util.GLFW as U
 
 
 main :: IO ()
-main = mainWith draw
+main = do
+    win <- U.initialize "multicolor triangle"
+    U.mainLoop (draw win) win
+    U.cleanup win
 
 draw :: GLFW.Window -> IO ()
 draw w = do
@@ -32,7 +35,7 @@ draw w = do
 
     matrixMode $= Projection
     loadIdentity
-    ortho (negate ratio) ratio (negate 1.0) 1.0 1.0 (negate 1.0)
+--    ortho (negate ratio) ratio (negate 1.0) 1.0 1.0 (negate 1.0)
     matrixMode $= Modelview 0
 
     loadIdentity
