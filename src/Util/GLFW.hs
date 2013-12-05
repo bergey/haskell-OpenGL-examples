@@ -13,14 +13,14 @@ keyCallback :: GLFW.KeyCallback
 keyCallback window key _ action _ = when (key == GLFW.Key'Escape && action == GLFW.KeyState'Pressed) $
   GLFW.setWindowShouldClose window True
 
-initialize :: IO GLFW.Window
-initialize = do
+initialize :: String -> IO GLFW.Window
+initialize title = do
   GLFW.setErrorCallback (Just errorCallback)
   successfulInit <- GLFW.init
   -- if init failed, we exit the program
   if not successfulInit then exitFailure else do
       GLFW.windowHint $ GLFW.WindowHint'OpenGLDebugContext True
-      mw <- GLFW.createWindow 640 480 "Simple example, haskell style" Nothing Nothing
+      mw <- GLFW.createWindow 640 480 title Nothing Nothing
       case mw of
           Nothing -> GLFW.terminate >> exitFailure
           Just window -> do
