@@ -23,6 +23,19 @@ executable wiki-t1-modern
                        bytestring >= 0.10 && < 0.11
   ghc-options:         -O2 -Wall
 
+executable wiki-t1-glutil
+  main-is:            wikibook/tutorial-01-intro/GLUtil.hs
+  hs-source-dirs:     src, .
+  other-modules:      Util.GLFW, Util.Shaders
+  build-depends:      base >= 4 && < 5,
+                      GLFW-b == 1.*,
+                      OpenGL >= 2.8 && < 2.10,
+                      vector >= 0.9 && < 0.11,
+                      bytestring >= 0.10 && < 0.11,
+                      OpenGLRaw >= 1.4 && < 1.5,
+                      GLUtil >= 0.7 && < 0.8
+  ghc-options:        -O2 -Wall
+
 executable glfw-direct
   main-is:            glfw/Direct.hs
   hs-source-dirs:     src, .
