@@ -35,4 +35,7 @@ One can use custom shaders with the `gl_Modelview` matrix, or
 
 The example programs:
 * `wikibook` ports a few examples from the excellent [OpenGL Wikibook](https://en.wikibooks.org/wiki/OpenGL_Programming)
-* `glfw` (2D rotating triangle)
+* `glfw` (2D rotating triangle, based on the [example][] that ships with [GLFW][])
+
+[GLFW]: http://www.glfw.org/
+[example]: http://www.glfw.org/docs/3.0/quick.html#quick_example
