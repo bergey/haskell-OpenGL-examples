@@ -27,6 +27,7 @@ main = do
 
 initResources :: IO GL.Program
 initResources = do
+    -- compile shaders
     vSh <- GL.createShader GL.VertexShader
     GL.shaderSourceBS vSh $= vsSource
     GL.compileShader vSh
@@ -45,6 +46,7 @@ initResources = do
         putStrLn $ "Log:" ++ slog
         exitFailure
 
+    -- link shaders into a program
     program <- GL.createProgram
     GL.attachShader program vSh
     GL.attachShader program fSh
