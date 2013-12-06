@@ -18,55 +18,39 @@ import           Graphics.Rendering.OpenGL (($=))
 -- Local modules
 import qualified Util.GLFW as U
 
-vertices :: V.Vector Float
-vertices = V.fromList [  0.0,  0.8
-                      , -0.8, -0.8
-                      ,  0.8, -0.8
-                      ]
-
-vsSource, fsSource :: BS.ByteString
-vsSource = BS.intercalate "\n"
-           [
-            "attribute vec2 coord2d; "
-           , ""
-           , "void main(void) { "
-           , " gl_Position = vec4(coord2d, 0.0, 1.0); "
-           , "}"
-           ]
-
-fsSource = BS.intercalate "\n"
-           [
-            ""
-           , "void main(void) { "
-           , " gl_FragColor[0] = 0.0; "
-           , " gl_FragColor[1] = 0.0; "
-           , " gl_FragColor[2] = 1.0; "
-           , "}"
-           ]
+main :: IO ()
+main = do
+    -- GLFW code will be the same in all variants
+    win <- U.initialize "My First Triangle"
+    setGraphicDefaults
+    (program, attrib) <- initResources
+    U.mainLoop (draw program attrib win) win
+    freeResources
+    U.cleanup win
 
 initResources :: IO (GL.Program, GL.AttribLocation)
 initResources = do
     vs <- GL.createShader GL.VertexShader
     GL.shaderSourceBS vs $= vsSource
     GL.compileShader vs
-    compileOK <- GL.get $ GL.compileStatus vs
-    unless compileOK $ do
+    vsOK <- GL.get $ GL.compileStatus vs
+    unless vsOK $ do
         hPutStrLn stderr "Error in vertex shader\n"
         -- Give a bit more error message than in the C++ version
-        slog <- GL.get $ GL.shaderInfoLog vs
-        putStrLn $ "Log:" ++ slog
+        vslog <- GL.get $ GL.shaderInfoLog vs
+        putStrLn $ "Log:" ++ vslog
         exitFailure
 
     -- Do it again for the fragment shader
     fs <- GL.createShader GL.FragmentShader
     GL.shaderSourceBS fs $= fsSource
     GL.compileShader fs
-    compileOK <- GL.get $ GL.compileStatus fs
-    unless compileOK $ do
+    fsOK <- GL.get $ GL.compileStatus fs
+    unless fsOK $ do
         hPutStrLn stderr "Error in fragment shader\n"
         -- Give a bit more error message than in the C++ version
-        slog <- GL.get $ GL.shaderInfoLog fs
-        putStrLn $ "Log:" ++ slog
+        fslog <- GL.get $ GL.shaderInfoLog fs
+        putStrLn $ "Log:" ++ fslog
         exitFailure
 
     program <- GL.createProgram
@@ -111,16 +95,6 @@ draw program _ win = do
 freeResources :: IO ()
 freeResources = return ()
 
-main :: IO ()
-main = do
-    -- GLFW code will be the same in all variants
-    win <- U.initialize "My First Triangle"
-    setGraphicDefaults
-    (program, attrib) <- initResources
-    U.mainLoop (draw program attrib win) win
-    freeResources
-    U.cleanup win
-
 setGraphicDefaults :: IO ()
 setGraphicDefaults = do
     GL.blend $= GL.Enabled
@@ -142,3 +116,29 @@ printGraphicStats = do
                                    , "GLSL Version:" ++ glslV
                                    , "Extensions:\n  [ " ++ L.intercalate "\n  , " exts ++ "\n  ]"
                                    ]
+
+vsSource, fsSource :: BS.ByteString
+vsSource = BS.intercalate "\n"
+           [
+            "attribute vec2 coord2d; "
+           , ""
+           , "void main(void) { "
+           , " gl_Position = vec4(coord2d, 0.0, 1.0); "
+           , "}"
+           ]
+
+fsSource = BS.intercalate "\n"
+           [
+            ""
+           , "void main(void) { "
+           , " gl_FragColor[0] = 0.0; "
+           , " gl_FragColor[1] = 0.0; "
+           , " gl_FragColor[2] = 1.0; "
+           , "}"
+           ]
+
+vertices :: V.Vector Float
+vertices = V.fromList [  0.0,  0.8
+                      , -0.8, -0.8
+                      ,  0.8, -0.8
+                      ]
