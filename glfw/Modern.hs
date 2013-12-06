@@ -23,18 +23,6 @@ main = do
     U.mainLoop (draw p win) win
     U.cleanup win
 
-colors :: V.Vector Float
-colors = V.fromList [ 1, 0, 0
-                    , 0, 1, 0
-                    , 0, 0, 1
-                    ]
-
-vertices :: V.Vector Float
-vertices = V.fromList [ -0.6, -0.4, 0
-                      ,  0.6, -0.4, 0
-                      ,    0,  0.6, 0
-                      ]
-
 initResources :: IO GL.Program
 initResources = do
     v <- U.makeShader GL.VertexShader vsSource
@@ -106,3 +94,15 @@ fsSource = BS.intercalate "\n"
            , " gl_FragColor = vec4(f_color, 1);"
            , "}"
            ]
+
+colors :: V.Vector Float
+colors = V.fromList [ 1, 0, 0
+                    , 0, 1, 0
+                    , 0, 0, 1
+                    ]
+
+vertices :: V.Vector Float
+vertices = V.fromList [ -0.6, -0.4, 0
+                      ,  0.6, -0.4, 0
+                      ,    0,  0.6, 0
+                      ]
