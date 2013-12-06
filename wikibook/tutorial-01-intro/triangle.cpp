@@ -3,14 +3,24 @@
  * This file is in the public domain.
  * Contributors: Sylvain Beucler
  */
+#include <GLFW/glfw3.h>
 #include <stdio.h>
 #include <stdlib.h>
-/* Use glew.h instead of gl.h to get all the GL prototypes declared */
-#include <GL/glew.h>
-/* Using the GLUT library for the base windowing setup */
-#include <GL/glut.h>
+
 GLuint program;
 GLint attribute_coord2d;
+
+static void error_callback(int error, const char* description)
+{
+     fputs(description, stderr);
+}
+
+static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+          glfwSetWindowShouldClose(window, GL_TRUE);
+}
+
 int init_resources()
 {
      GLint compile_ok = GL_FALSE, link_ok = GL_FALSE;
@@ -68,7 +78,8 @@ int init_resources()
      }
      return 1;
 }
-void onDisplay()
+
+void onDisplay(GLFWwindow* window)
 {
      glClearColor(1.0, 1.0, 1.0, 1.0);
      glClear(GL_COLOR_BUFFER_BIT);
@@ -91,26 +102,33 @@ void onDisplay()
      /* Push each element in buffer_vertices to the vertex shader */
      glDrawArrays(GL_TRIANGLES, 0, 3);
      glDisableVertexAttribArray(attribute_coord2d);
-     glutSwapBuffers();
+     glfwSwapBuffers(window);
 }
-void free_resources()
+
+void free_resources(GLFWwindow* window)
 {
      glDeleteProgram(program);
+     glfwDestroywindow(window)
+     glfwTerminate();
 }
+
 int main(int argc, char* argv[]) {
-     glutInit(&argc, argv);
-     glutInitDisplayMode(GLUT_RGBA|GLUT_DOUBLE|GLUT_DEPTH);
-     glutInitWindowSize(640, 480);
-     glutCreateWindow("My First Triangle");
-     GLenum glew_status = glewInit();
-     if (glew_status != GLEW_OK) {
-          fprintf(stderr, "Error: %s\n", glewGetErrorString(glew_status));
-          return 1;
+     if (!glfwInit())
+          exit(EXIT_FAILURE);
+     GLFWwindow* window = glfwCreateWindow(640, 480, "My First Triangle", NULL, NULL);
+     if (!window) {
+          glfwTerminate();
+          exit(EXIT_FAILURE);
      }
+     glfwMakeContextCurrent(window);
+     int width, height;
+     glfwGetFrameBufferSize(window, &width, &height);
+     glViewport(0, 0, width, height);
      if (init_resources()) {
-          glutDisplayFunc(onDisplay);
-          glutMainLoop();
+          while (!glfwWindowShouldClose(window)) {
+               onDisplay(window);
+          }
+     free_resources(window);
      }
-     free_resources();
      return 0;
 }

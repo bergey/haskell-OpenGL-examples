@@ -11,3 +11,4 @@ cabal.config
 *~
 *.cmake
 CMakeFiles
+c.exe

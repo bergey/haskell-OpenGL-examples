@@ -26,8 +26,8 @@ vertices = V.fromList [  0.0,  0.8
 
 vsSource, fsSource :: BS.ByteString
 vsSource = BS.intercalate "\n"
-           [ "#version 120"
-           , "attribute vec2 coord2d; "
+           [
+            "attribute vec2 coord2d; "
            , ""
            , "void main(void) { "
            , " gl_Position = vec4(coord2d, 0.0, 1.0); "
@@ -35,8 +35,8 @@ vsSource = BS.intercalate "\n"
            ]
 
 fsSource = BS.intercalate "\n"
-           [ "#version 120"
-           , ""
+           [
+            ""
            , "void main(void) { "
            , " gl_FragColor[0] = 0.0; "
            , " gl_FragColor[1] = 0.0; "
@@ -72,6 +72,7 @@ initResources = do
     program <- GL.createProgram
     GL.attachShader program vs
     GL.attachShader program fs
+    GL.attribLocation program "coord2d" $= GL.AttribLocation 0
     GL.linkProgram program
     linkOK <- GL.get $ GL.linkStatus program
     GL.validateProgram program
@@ -79,7 +80,6 @@ initResources = do
     unless (linkOK && status) $ do
         hPutStrLn stderr "GL.linkProgram error"
         exitFailure
-
     GL.currentProgram $= Just program
 
     attrs <- GL.get $ GL.activeAttribs program
@@ -87,16 +87,20 @@ initResources = do
         Nothing -> do
             hPutStrLn stderr "Could not bind attribute coord2d"
             exitFailure
-        Just (i,_,_) -> return (program, GL.AttribLocation (fromIntegral i))
+        Just (i,_,_) -> do
+            putStrLn $ "coord2d is in location: " ++ show i
+            return (program, GL.AttribLocation (fromIntegral i))
 
 draw :: GL.Program -> GL.AttribLocation -> GLFW.Window -> IO ()
-draw program attrib win = do
+draw program _ win = do
+    let attrib = GL.AttribLocation 0
     GL.clearColor $= GL.Color4 1 1 1 1
-    GL.clear [GL.ColorBuffer]
+    GL.clear [GL.ColorBuffer, GL.DepthBuffer]
     -- In C++ example GLUT handles this?
     (width, height) <- GLFW.getFramebufferSize win
     GL.viewport $= (GL.Position 0 0, GL.Size (fromIntegral width) (fromIntegral height))
     GL.currentProgram $= Just program
+    GL.get GL.errors >>= mapM_ (putStrLn . ("GL: "++) . show)
     GL.vertexAttribArray attrib $= GL.Enabled
     V.unsafeWith vertices $ \ptr ->
         GL.vertexAttribPointer attrib $=
