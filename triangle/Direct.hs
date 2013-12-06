@@ -35,7 +35,7 @@ draw w = do
 
     matrixMode $= Projection
     loadIdentity
---    ortho (negate ratio) ratio (negate 1.0) 1.0 1.0 (negate 1.0)
+    ortho (negate ratio) ratio (negate 1.0) 1.0 1.0 (negate 1.0)
     matrixMode $= Modelview 0
 
     loadIdentity
