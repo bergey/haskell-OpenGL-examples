@@ -2,25 +2,17 @@
 
 module Main where
 
--- This is a Haskell translation of the official GLFW quick example
--- found at <http://www.glfw.org/docs/3.0/quick.html#quick_example>
--- using the GLFW-b library, version 1.x
-
--- I tried hard to keep the same structure so that it is simple
--- enough to go back and forth between the C version and the 
--- Haskell one, while preserving some usual haskell tricks
-
--- If you have any comment, bug report, or any other kind of
--- feedback, feel free to shoot me an email at
--- alpmestan at gmail dot com
-
+-- General Haskell modules
 import qualified Data.Vector.Storable as V
 import qualified Data.ByteString as BS
 
-import Graphics.Rendering.OpenGL
-import Graphics.Rendering.OpenGL.Raw.Core31
+-- Import all OpenGL libraries qualified, for pedagogical reasons
+import qualified Graphics.Rendering.OpenGL as GL
+import           Graphics.Rendering.OpenGL (($=))
+import Graphics.Rendering.OpenGL.Raw.Core31 (glUniformMatrix3fv)
 import qualified Graphics.UI.GLFW as GLFW
 
+-- Local modules
 import qualified Util.GLFW as U
 import qualified Util.Shaders as U
 
@@ -43,47 +35,47 @@ vertices = V.fromList [ -0.6, -0.4, 0
                       ,    0,  0.6, 0
                       ]
 
-initResources :: IO Program
+initResources :: IO GL.Program
 initResources = do
-    v <- U.makeShader VertexShader vsSource
-    f <- U.makeShader FragmentShader fsSource
+    v <- U.makeShader GL.VertexShader vsSource
+    f <- U.makeShader GL.FragmentShader fsSource
 
-    p <- U.makeProgram [v, f] [ ("coord", AttribLocation 0)
-                              , ("color", AttribLocation 1)
+    p <- U.makeProgram [v, f] [ ("coord", GL.AttribLocation 0)
+                              , ("color", GL.AttribLocation 1)
                               ]
-    currentProgram $= Just p
+    GL.currentProgram $= Just p
 
     U.printError
     return p
 
-draw :: Program -> GLFW.Window -> IO ()
+draw :: GL.Program -> GLFW.Window -> IO ()
 draw p w = do
     (width, height) <- GLFW.getFramebufferSize w
-    viewport $= (Position 0 0, Size (fromIntegral width) (fromIntegral height))
+    GL.viewport $= (GL.Position 0 0, GL.Size (fromIntegral width) (fromIntegral height))
 
-    -- let ratio = fromIntegral width / fromIntegral height
+    let ratio = fromIntegral width / fromIntegral height
 
-    clear [ColorBuffer]
+    GL.clear [GL.ColorBuffer]
 
-    currentProgram $= Just p
-    UniformLocation tLoc <- get $ uniformLocation p "transform"
-    vertexAttribArray (AttribLocation 0) $= Enabled
+    GL.currentProgram $= Just p
+    GL.UniformLocation tLoc <- GL.get $ GL.uniformLocation p "transform"
+    GL.vertexAttribArray (GL.AttribLocation 0) $= GL.Enabled
     V.unsafeWith vertices $ \ptr -> do
-        vertexAttribPointer (AttribLocation 0) $=
-            (ToFloat, VertexArrayDescriptor 3 Float 0 ptr)
-    vertexAttribArray (AttribLocation 1) $= Enabled
+        GL.vertexAttribPointer (GL.AttribLocation 0) $=
+            (GL.ToFloat, GL.VertexArrayDescriptor 3 GL.Float 0 ptr)
+    GL.vertexAttribArray (GL.AttribLocation 1) $= GL.Enabled
     V.unsafeWith colors $ \ptr -> do
-        vertexAttribPointer (AttribLocation 1) $=
-            (ToFloat, VertexArrayDescriptor 3 Float 0 ptr)
+        GL.vertexAttribPointer (GL.AttribLocation 1) $=
+            (GL.ToFloat, GL.VertexArrayDescriptor 3 GL.Float 0 ptr)
     t <- GLFW.getTime
     V.unsafeWith (rotateM t) $ \ptr -> do
         glUniformMatrix3fv tLoc 1 1 ptr
-    drawArrays Triangles 0 3
-    vertexAttribArray (AttribLocation 0) $= Disabled
-    vertexAttribArray (AttribLocation 1) $= Disabled
+    GL.drawArrays GL.Triangles 0 3
+    GL.vertexAttribArray (GL.AttribLocation 0) $= GL.Disabled
+    GL.vertexAttribArray (GL.AttribLocation 1) $= GL.Disabled
 
 
-rotateM :: Maybe Double -> V.Vector GLfloat
+rotateM :: Maybe Double -> V.Vector GL.GLfloat
 rotateM Nothing  = V.fromList [ 1, 0, 0
                              , 0, 1, 0
                              , 0, 0, 1
