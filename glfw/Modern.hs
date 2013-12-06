@@ -37,6 +37,7 @@ initResources = do
         putStrLn $ "Log:" ++ slog
         exitFailure
 
+    -- Do it again for the fragment shader
     fSh <- GL.createShader GL.FragmentShader
     GL.shaderSourceBS fSh $= fsSource
     GL.compileShader fSh
@@ -76,8 +77,6 @@ draw p w = do
     GL.clear [GL.ColorBuffer]
 
     GL.currentProgram $= Just p
-    GL.UniformLocation tLoc <- GL.get $ GL.uniformLocation p "transform"
-    GL.UniformLocation pLoc <- GL.get $ GL.uniformLocation p "projection"
     GL.vertexAttribArray (GL.AttribLocation 0) $= GL.Enabled
     V.unsafeWith vertices $ \ptr -> do
         GL.vertexAttribPointer (GL.AttribLocation 0) $=
@@ -87,8 +86,10 @@ draw p w = do
         GL.vertexAttribPointer (GL.AttribLocation 1) $=
             (GL.ToFloat, GL.VertexArrayDescriptor 3 GL.Float 0 ptr)
     t <- GLFW.getTime
+    GL.UniformLocation tLoc <- GL.get $ GL.uniformLocation p "transform"
     V.unsafeWith (rotateM t) $ \ptr -> do
         glUniformMatrix3fv tLoc 1 1 ptr
+    GL.UniformLocation pLoc <- GL.get $ GL.uniformLocation p "projection"
     V.unsafeWith (aspectM ratio) $ \ptr ->
         glUniformMatrix4fv pLoc 1 1 ptr
     GL.drawArrays GL.Triangles 0 3
