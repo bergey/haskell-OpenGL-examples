@@ -20,7 +20,7 @@ Haskell wrapper over OpenGL:
 [GLUtil]: http://hackage.haskell.org/package/GLUtil
 [vinyl-gl]: http://hackage.haskell.org/package/vinyl-gl
 
-All examples use GLFW-b for windowing.  There are a few helper
+All examples use [GLFW-b][] for windowing.  There are a few helper
 functions in `src/Util` which are used in all the examples.
 
 I've otherwise tried to avoid such functions, to make it easier to
@@ -39,3 +39,4 @@ The example programs:
 
 [GLFW]: http://www.glfw.org/
 [example]: http://www.glfw.org/docs/3.0/quick.html#quick_example
+[GLFW-b]: http://hackage.haskell.org/package/GLFW-b
