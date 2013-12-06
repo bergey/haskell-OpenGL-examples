@@ -111,10 +111,17 @@ main :: IO ()
 main = do
     -- GLFW code will be the same in all variants
     win <- U.initialize "My First Triangle"
+    setGraphicDefaults
     (program, attrib) <- initResources
     U.mainLoop (draw program attrib win) win
     freeResources
     U.cleanup win
+
+setGraphicDefaults :: IO ()
+setGraphicDefaults = do
+    GL.blend $= GL.Enabled
+    GL.blendFunc $= (GL.SrcAlpha, GL.OneMinusSrcAlpha)
+    GL.depthFunc $= Nothing
 
 printGraphicStats :: IO ()
 printGraphicStats = do
