@@ -5,11 +5,13 @@ module Main where
 -- General Haskell modules
 import qualified Data.Vector.Storable as V
 import qualified Data.ByteString as BS
+import           Control.Monad (unless)
+import           System.Exit (exitFailure)
 
 -- Import all OpenGL libraries qualified, for pedagogical reasons
 import qualified Graphics.Rendering.OpenGL as GL
 import           Graphics.Rendering.OpenGL (($=))
-import Graphics.Rendering.OpenGL.Raw.Core31 (glUniformMatrix3fv, glUniformMatrix4fv)
+import           Graphics.Rendering.OpenGL.Raw.Core31 (glUniformMatrix3fv, glUniformMatrix4fv)
 import qualified Graphics.UI.GLFW as GLFW
 
 -- Local modules
@@ -25,16 +27,42 @@ main = do
 
 initResources :: IO GL.Program
 initResources = do
-    v <- U.makeShader GL.VertexShader vsSource
-    f <- U.makeShader GL.FragmentShader fsSource
+    vSh <- GL.createShader GL.VertexShader
+    GL.shaderSourceBS vSh $= vsSource
+    GL.compileShader vSh
+    vs'Ok <- GL.get $ GL.compileStatus vSh
+    unless vs'Ok $ do
+        slog <- GL.get $ GL.shaderInfoLog vSh
+        putStrLn $ "Log:" ++ slog
+        exitFailure
 
-    p <- U.makeProgram [v, f] [ ("coord", GL.AttribLocation 0)
-                              , ("color", GL.AttribLocation 1)
-                              ]
-    GL.currentProgram $= Just p
+    fSh <- GL.createShader GL.FragmentShader
+    GL.shaderSourceBS fSh $= fsSource
+    GL.compileShader fSh
+    fs'Ok <- GL.get $ GL.compileStatus fSh
+    unless fs'Ok $ do
+        slog <- GL.get $ GL.shaderInfoLog fSh
+        putStrLn $ "Log:" ++ slog
+        exitFailure
+
+    program <- GL.createProgram
+    GL.attachShader program vSh
+    GL.attachShader program fSh
+    GL.attribLocation program "coord" $= GL.AttribLocation 0
+    GL.attribLocation program "color" $= GL.AttribLocation 1
+    GL.linkProgram program
+    p'Ok <- GL.get $ GL.linkStatus program
+    GL.validateProgram program
+    status <- GL.get $ GL.validateStatus program
+    unless (p'Ok && status) $ do
+        plog <- GL.get $ GL.programInfoLog program
+        putStrLn plog
+        exitFailure
+
+    GL.currentProgram $= Just program
 
     U.printError
-    return p
+    return program
 
 draw :: GL.Program -> GLFW.Window -> IO ()
 draw p w = do
