@@ -89,10 +89,10 @@ initResources = do
             exitFailure
         Just (i,_,_) -> return (program, GL.AttribLocation (fromIntegral i))
 
-    GL.clearColor $= GL.Color4 1 1 1 1
-    GL.clear [GL.ColorBuffer]
 draw :: GL.Program -> GL.AttribLocation -> GLFW.Window -> IO ()
 draw program attrib win = do
+    GL.clearColor $= GL.Color4 1 1 1 1
+    GL.clear [GL.ColorBuffer]
     -- In C++ example GLUT handles this?
     (width, height) <- GLFW.getFramebufferSize win
     GL.viewport $= (GL.Position 0 0, GL.Size (fromIntegral width) (fromIntegral height))
