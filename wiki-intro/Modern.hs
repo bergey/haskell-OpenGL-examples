@@ -33,24 +33,24 @@ initResources = do
     vs <- GL.createShader GL.VertexShader
     GL.shaderSourceBS vs $= vsSource
     GL.compileShader vs
-    compileOK <- GL.get $ GL.compileStatus vs
-    unless compileOK $ do
+    vsOK <- GL.get $ GL.compileStatus vs
+    unless vsOK $ do
         hPutStrLn stderr "Error in vertex shader\n"
         -- Give a bit more error message than in the C++ version
-        slog <- GL.get $ GL.shaderInfoLog vs
-        putStrLn $ "Log:" ++ slog
+        vslog <- GL.get $ GL.shaderInfoLog vs
+        putStrLn $ "Log:" ++ vslog
         exitFailure
 
     -- Do it again for the fragment shader
     fs <- GL.createShader GL.FragmentShader
     GL.shaderSourceBS fs $= fsSource
     GL.compileShader fs
-    compileOK <- GL.get $ GL.compileStatus fs
-    unless compileOK $ do
+    fsOK <- GL.get $ GL.compileStatus fs
+    unless fsOK $ do
         hPutStrLn stderr "Error in fragment shader\n"
         -- Give a bit more error message than in the C++ version
-        slog <- GL.get $ GL.shaderInfoLog fs
-        putStrLn $ "Log:" ++ slog
+        fslog <- GL.get $ GL.shaderInfoLog fs
+        putStrLn $ "Log:" ++ fslog
         exitFailure
 
     program <- GL.createProgram
