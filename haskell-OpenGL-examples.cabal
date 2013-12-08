@@ -90,6 +90,20 @@ executable wiki-t3-linear
                       linear >= 1.3 && < 1.4
   ghc-options:        -O2 -Wall
 
+executable wiki-t4-linear
+  main-is:            wikibook/tutorial-04-matrices/Linear.hs
+  hs-source-dirs:     src, .
+  other-modules:      Util.GLFW, Util.Shaders
+  build-depends:      base >= 4 && < 5,
+                      GLFW-b == 1.*,
+                      OpenGL >= 2.8 && < 2.10,
+                      bytestring >= 0.10 && < 0.11,
+                      OpenGLRaw >= 1.4 && < 1.5,
+                      GLUtil >= 0.7 && < 0.8,
+                      filepath >= 1.3 && < 1.4,
+                      linear >= 1.3 && < 1.4
+  ghc-options:        -O2 -Wall
+
 executable glfw-direct
   main-is:            glfw/Direct.hs
   hs-source-dirs:     src, .
