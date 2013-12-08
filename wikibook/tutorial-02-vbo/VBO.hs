@@ -6,7 +6,7 @@ module Main where
 
 -- General Haskell modules
 import           Control.Applicative
-import System.FilePath ((</>))
+import           System.FilePath ((</>))
 
 -- Import all OpenGL libraries qualified, for pedagogical reasons
 import qualified Graphics.Rendering.OpenGL as GL
@@ -31,6 +31,8 @@ initResources = do
     vs <- U.loadShader GL.VertexShader $ shaderPath </> "triangle.v.glsl"
     fs <- U.loadShader GL.FragmentShader $ shaderPath </> "triangle.f.glsl"
     p <- U.linkShaderProgram [vs, fs]
+    GL.blend $= GL.Enabled
+    GL.blendFunc $= (GL.SrcAlpha, GL.OneMinusSrcAlpha)
     Program p <$> GL.get (GL.attribLocation p "coord2d")
               <*> U.makeBuffer GL.ArrayBuffer vertices
 
