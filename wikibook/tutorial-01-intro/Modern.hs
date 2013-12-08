@@ -15,15 +15,15 @@ import qualified Graphics.UI.GLFW as GLFW
 import           Graphics.Rendering.OpenGL (($=))
 
 -- Local modules
-import qualified Util.GLFW as U
+import qualified Util.GLFW as W
 
 main :: IO ()
 main = do
     -- GLFW code will be the same in all variants
-    win <- U.initialize "My First Triangle"
-    (program, attrib) <- initResources
-    U.mainLoop (draw program attrib win) win
-    U.cleanup win
+    win <- W.initialize "My First Triangle"
+    (prog, attrib) <- initResources
+    W.mainLoop (draw prog attrib win) win
+    W.cleanup win
 
 initResources :: IO (GL.Program, GL.AttribLocation)
 initResources = do
