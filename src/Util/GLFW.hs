@@ -20,6 +20,7 @@ initialize title = do
   -- if init failed, we exit the program
   if not successfulInit then exitFailure else do
       GLFW.windowHint $ GLFW.WindowHint'OpenGLDebugContext True
+      GLFW.windowHint $ GLFW.WindowHint'DepthBits 16
       mw <- GLFW.createWindow 640 480 title Nothing Nothing
       case mw of
           Nothing -> GLFW.terminate >> exitFailure
