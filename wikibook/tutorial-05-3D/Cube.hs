@@ -24,7 +24,7 @@ import qualified Util.GLFW as W
 main :: IO ()
 main = do
     -- GLFW code will be the same in all variants
-    win <- W.initialize "My First Triangle"
+    win <- W.initialize "My First Cube"
     prog <- initResources
     W.mainLoop (draw prog win) win
     W.cleanup win
