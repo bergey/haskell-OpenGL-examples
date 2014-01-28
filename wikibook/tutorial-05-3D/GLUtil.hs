@@ -41,9 +41,9 @@ initResources = do
         f = shaderPath </> "cube.f.glsl"
     print vertices
     Resources <$> U.simpleShaderProgram v f
-              <*> U.makeBuffer GL.ArrayBuffer vertices
-              <*> U.makeBuffer GL.ArrayBuffer colors
-              <*> U.makeBuffer GL.ElementArrayBuffer elements
+              <*> U.fromSource GL.ArrayBuffer vertices
+              <*> U.fromSource GL.ArrayBuffer colors
+              <*> U.fromSource GL.ElementArrayBuffer elements
 
 draw :: Resources -> GLFW.Window -> IO ()
 draw r win = do
