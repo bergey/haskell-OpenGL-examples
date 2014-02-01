@@ -12,97 +12,97 @@ category:            Graphics
 build-type:          Simple
 cabal-version:       >=1.8
 
--- executable wiki-t1-modern
---   main-is:             wikibook/tutorial-01-intro/Modern.hs
---   hs-source-dirs:      src, .
---   other-modules:       Util.GLFW
---   build-depends:       base >= 4 && < 5,
---                        GLFW-b == 1.*,
---                        OpenGL >= 2.8 && < 2.10,
---                        vector >= 0.9 && < 0.11,
---                        bytestring >= 0.10 && < 0.11
---   ghc-options:         -O2 -Wall
+executable wiki-t1-modern
+  main-is:             wikibook/tutorial-01-intro/Modern.hs
+  hs-source-dirs:      src, .
+  other-modules:       Util.GLFW
+  build-depends:       base >= 4 && < 5,
+                       GLFW-b == 1.*,
+                       OpenGL >= 2.8 && < 2.10,
+                       vector >= 0.9 && < 0.11,
+                       bytestring >= 0.10 && < 0.11
+  ghc-options:         -O2 -Wall
 
--- executable wiki-t2-vector
---   main-is:            wikibook/tutorial-02-vbo/Vector.hs
---   hs-source-dirs:     src, .
---   other-modules:      Util.GLFW, Util.Shaders
---   build-depends:      base >= 4 && < 5,
---                       GLFW-b == 1.*,
---                       OpenGL >= 2.8 && < 2.10,
---                       vector >= 0.9 && < 0.11,
---                       bytestring >= 0.10 && < 0.11,
---                       OpenGLRaw >= 1.4 && < 1.5,
---                       GLUtil >= 0.7 && < 0.8,
---                       filepath >= 1.3
---   ghc-options:        -O2 -Wall
+executable wiki-t2-vector
+  main-is:            wikibook/tutorial-02-vbo/Vector.hs
+  hs-source-dirs:     src, .
+  other-modules:      Util.GLFW, Util.Shaders
+  build-depends:      base >= 4 && < 5,
+                      GLFW-b == 1.*,
+                      OpenGL >= 2.8 && < 2.10,
+                      vector >= 0.9 && < 0.11,
+                      bytestring >= 0.10 && < 0.11,
+                      OpenGLRaw >= 1.4 && < 1.5,
+                      GLUtil >= 0.7 && < 0.8,
+                      filepath >= 1.3
+  ghc-options:        -O2 -Wall
 
--- executable wiki-t2-vbo
---   main-is:            wikibook/tutorial-02-vbo/VBO.hs
---   hs-source-dirs:     src, .
---   other-modules:      Util.GLFW, Util.Shaders
---   build-depends:      base >= 4 && < 5,
---                       GLFW-b == 1.*,
---                       OpenGL >= 2.8 && < 2.10,
---                       bytestring >= 0.10 && < 0.11,
---                       OpenGLRaw >= 1.4 && < 1.5,
---                       GLUtil >= 0.7 && < 0.8,
---                       filepath >= 1.3
---   ghc-options:        -O2 -Wall
+executable wiki-t2-vbo
+  main-is:            wikibook/tutorial-02-vbo/VBO.hs
+  hs-source-dirs:     src, .
+  other-modules:      Util.GLFW, Util.Shaders
+  build-depends:      base >= 4 && < 5,
+                      GLFW-b == 1.*,
+                      OpenGL >= 2.8 && < 2.10,
+                      bytestring >= 0.10 && < 0.11,
+                      OpenGLRaw >= 1.4 && < 1.5,
+                      GLUtil >= 0.7 && < 0.8,
+                      filepath >= 1.3
+  ghc-options:        -O2 -Wall
 
--- executable wiki-t3-separate
---   main-is:            wikibook/tutorial-03-attributes/Separate.hs
---   hs-source-dirs:     src, .
---   other-modules:      Util.GLFW, Util.Shaders
---   build-depends:      base >= 4 && < 5,
---                       GLFW-b == 1.*,
---                       OpenGL >= 2.8 && < 2.10,
---                       bytestring >= 0.10 && < 0.11,
---                       OpenGLRaw >= 1.4 && < 1.5,
---                       GLUtil >= 0.7 && < 0.8,
---                       filepath >= 1.3
---   ghc-options:        -O2 -Wall
+executable wiki-t3-separate
+  main-is:            wikibook/tutorial-03-attributes/Separate.hs
+  hs-source-dirs:     src, .
+  other-modules:      Util.GLFW, Util.Shaders
+  build-depends:      base >= 4 && < 5,
+                      GLFW-b == 1.*,
+                      OpenGL >= 2.8 && < 2.10,
+                      bytestring >= 0.10 && < 0.11,
+                      OpenGLRaw >= 1.4 && < 1.5,
+                      GLUtil >= 0.7 && < 0.8,
+                      filepath >= 1.3
+  ghc-options:        -O2 -Wall
 
--- executable wiki-t3-interleaved
---   main-is:            wikibook/tutorial-03-attributes/Interleaved.hs
---   hs-source-dirs:     src, .
---   other-modules:      Util.GLFW, Util.Shaders
---   build-depends:      base >= 4 && < 5,
---                       GLFW-b == 1.*,
---                       OpenGL >= 2.8 && < 2.10,
---                       bytestring >= 0.10 && < 0.11,
---                       OpenGLRaw >= 1.4 && < 1.5,
---                       GLUtil >= 0.7 && < 0.8,
---                       filepath >= 1.3
---   ghc-options:        -O2 -Wall
+executable wiki-t3-interleaved
+  main-is:            wikibook/tutorial-03-attributes/Interleaved.hs
+  hs-source-dirs:     src, .
+  other-modules:      Util.GLFW, Util.Shaders
+  build-depends:      base >= 4 && < 5,
+                      GLFW-b == 1.*,
+                      OpenGL >= 2.8 && < 2.10,
+                      bytestring >= 0.10 && < 0.11,
+                      OpenGLRaw >= 1.4 && < 1.5,
+                      GLUtil >= 0.7 && < 0.8,
+                      filepath >= 1.3
+  ghc-options:        -O2 -Wall
 
--- executable wiki-t3-linear
---   main-is:            wikibook/tutorial-03-attributes/Linear.hs
---   hs-source-dirs:     src, .
---   other-modules:      Util.GLFW, Util.Shaders
---   build-depends:      base >= 4 && < 5,
---                       GLFW-b == 1.*,
---                       OpenGL >= 2.8 && < 2.10,
---                       bytestring >= 0.10 && < 0.11,
---                       OpenGLRaw >= 1.4 && < 1.5,
---                       GLUtil >= 0.7 && < 0.8,
---                       filepath >= 1.3 && < 1.4,
---                       linear >= 1.3 && < 1.4
---   ghc-options:        -O2 -Wall
+executable wiki-t3-linear
+  main-is:            wikibook/tutorial-03-attributes/Linear.hs
+  hs-source-dirs:     src, .
+  other-modules:      Util.GLFW, Util.Shaders
+  build-depends:      base >= 4 && < 5,
+                      GLFW-b == 1.*,
+                      OpenGL >= 2.8 && < 2.10,
+                      bytestring >= 0.10 && < 0.11,
+                      OpenGLRaw >= 1.4 && < 1.5,
+                      GLUtil >= 0.7 && < 0.8,
+                      filepath >= 1.3 && < 1.4,
+                      linear >= 1.3 && < 1.4
+  ghc-options:        -O2 -Wall
 
--- executable wiki-t4-linear
---   main-is:            wikibook/tutorial-04-matrices/Linear.hs
---   hs-source-dirs:     src, .
---   other-modules:      Util.GLFW, Util.Shaders
---   build-depends:      base >= 4 && < 5,
---                       GLFW-b == 1.*,
---                       OpenGL >= 2.8 && < 2.10,
---                       bytestring >= 0.10 && < 0.11,
---                       OpenGLRaw >= 1.4 && < 1.5,
---                       GLUtil >= 0.7 && < 0.8,
---                       filepath >= 1.3 && < 1.4,
---                       linear >= 1.3 && < 1.4
---   ghc-options:        -O2 -Wall
+executable wiki-t4-linear
+  main-is:            wikibook/tutorial-04-matrices/Linear.hs
+  hs-source-dirs:     src, .
+  other-modules:      Util.GLFW, Util.Shaders
+  build-depends:      base >= 4 && < 5,
+                      GLFW-b == 1.*,
+                      OpenGL >= 2.8 && < 2.10,
+                      bytestring >= 0.10 && < 0.11,
+                      OpenGLRaw >= 1.4 && < 1.5,
+                      GLUtil >= 0.7 && < 0.8,
+                      filepath >= 1.3 && < 1.4,
+                      linear >= 1.3 && < 1.4
+  ghc-options:        -O2 -Wall
 
 executable wiki-t5-glutil
   main-is:            wikibook/tutorial-05-3D/GLUtil.hs
@@ -136,24 +136,42 @@ executable wiki-t5-vinyl
                       vinyl >= 0.2 && < 0.3
   ghc-options:        -O2 -Wall
 
--- executable glfw-direct
---   main-is:            glfw/Direct.hs
---   hs-source-dirs:     src, .
---   other-modules:      Util.GLFW
---   build-depends:      base >= 4 && < 5,
---                       GLFW-b == 1.*,
---                       OpenGL >= 2.8 && < 2.10
---   ghc-options:        -O2 -Wall
-
-
--- executable glfw-modern
---   main-is:            glfw/Modern.hs
+-- executable wiki-t5-th
+--   main-is:            wikibook/tutorial-05-3D/TH.hs
 --   hs-source-dirs:     src, .
 --   other-modules:      Util.GLFW, Util.Shaders
 --   build-depends:      base >= 4 && < 5,
 --                       GLFW-b == 1.*,
 --                       OpenGL >= 2.8 && < 2.10,
---                       vector >= 0.9 && < 0.11,
 --                       bytestring >= 0.10 && < 0.11,
---                       OpenGLRaw >= 1.4 && < 1.5
+--                       OpenGLRaw >= 1.4 && < 1.5,
+--                       GLUtil >= 0.7 && < 0.8,
+--                       filepath >= 1.3 && < 1.4,
+--                       linear >= 1.3 && < 1.4,
+--                       distributive >= 0.3 && < 0.4,
+--                       vinyl-gl >= 0.1 && < 0.2,
+--                       vinyl >= 0.2 && < 0.3,
+--                       file-embed < 0.1
 --   ghc-options:        -O2 -Wall
+
+executable glfw-direct
+  main-is:            glfw/Direct.hs
+  hs-source-dirs:     src, .
+  other-modules:      Util.GLFW
+  build-depends:      base >= 4 && < 5,
+                      GLFW-b == 1.*,
+                      OpenGL >= 2.8 && < 2.10
+  ghc-options:        -O2 -Wall
+
+
+executable glfw-modern
+  main-is:            glfw/Modern.hs
+  hs-source-dirs:     src, .
+  other-modules:      Util.GLFW, Util.Shaders
+  build-depends:      base >= 4 && < 5,
+                      GLFW-b == 1.*,
+                      OpenGL >= 2.8 && < 2.10,
+                      vector >= 0.9 && < 0.11,
+                      bytestring >= 0.10 && < 0.11,
+                      OpenGLRaw >= 1.4 && < 1.5
+  ghc-options:        -O2 -Wall
