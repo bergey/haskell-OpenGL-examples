@@ -37,10 +37,9 @@ main = do
     W.mainLoop (draw prog win) win
     W.cleanup win
 
-shaderPath :: FilePath
-shaderPath = "wikibook" </> "tutorial-05-3D"
-
 vSrc, fSrc :: BS.ByteString
+-- TH arguments need to be literal strings, or defined in another module
+-- In real code, the latter would be better to avoid platform-dependent '/' 
 vSrc = $(embedFile $ "wikibook/tutorial-05-3D/cube.v.glsl")
 fSrc = $(embedFile $ "wikibook/tutorial-05-3D/cube.f.glsl")
 
