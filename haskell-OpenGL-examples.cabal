@@ -87,7 +87,7 @@ executable wiki-t3-linear
                       OpenGLRaw >= 1.4 && < 1.5,
                       GLUtil >= 0.7 && < 0.8,
                       filepath >= 1.3 && < 1.4,
-                      linear >= 1.3 && < 1.4
+                      linear >= 1.3 && < 1.7
   ghc-options:        -O2 -Wall
 
 executable wiki-t4-linear
@@ -101,7 +101,7 @@ executable wiki-t4-linear
                       OpenGLRaw >= 1.4 && < 1.5,
                       GLUtil >= 0.7 && < 0.8,
                       filepath >= 1.3 && < 1.4,
-                      linear >= 1.3 && < 1.4
+                      linear >= 1.3 && < 1.7
   ghc-options:        -O2 -Wall
 
 executable wiki-t5-glutil
@@ -115,7 +115,7 @@ executable wiki-t5-glutil
                       OpenGLRaw >= 1.4 && < 1.5,
                       GLUtil >= 0.7 && < 0.8,
                       filepath >= 1.3 && < 1.4,
-                      linear >= 1.3 && < 1.4,
+                      linear >= 1.3 && < 1.7,
                       distributive >= 0.3 && < 0.4
   ghc-options:        -O2 -Wall
 
@@ -130,7 +130,7 @@ executable wiki-t5-vinyl
                       OpenGLRaw >= 1.4 && < 1.5,
                       GLUtil >= 0.7 && < 0.8,
                       filepath >= 1.3 && < 1.4,
-                      linear >= 1.3 && < 1.4,
+                      linear >= 1.3 && < 1.7,
                       distributive >= 0.3 && < 0.4,
                       vinyl-gl >= 0.1 && < 0.2,
                       vinyl >= 0.2 && < 0.3
@@ -147,7 +147,7 @@ executable wiki-t5-th
                       OpenGLRaw >= 1.4 && < 1.5,
                       GLUtil >= 0.7 && < 0.8,
                       filepath >= 1.3 && < 1.4,
-                      linear >= 1.3 && < 1.4,
+                      linear >= 1.3 && < 1.7,
                       distributive >= 0.3 && < 0.4,
                       vinyl-gl >= 0.1 && < 0.2,
                       vinyl >= 0.2 && < 0.3,
