@@ -11,7 +11,7 @@ Vinyl.hs uses [vinyl-gl][] to marshal the shader inputs and provide better typin
 TH.hs uses Template Haskell and [file-embed][] to inline the shaders
 at compile time.  This avoids hardcoded file paths in the executable,
 and the requirement to be in a particular directory when running the
-program.  Note that TH.hs depends on [an unmerged branch of GLUtil](https://github.com/bergey/GLUtil/tree/shader-bytestring).
+program.
 
 [GLUtil]: http://hackage.haskell.org/package/GLUtil
 [vinyl-gl]: http://hackage.haskell.org/package/vinyl-gl
