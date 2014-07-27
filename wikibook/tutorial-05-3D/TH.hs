@@ -17,7 +17,8 @@ import           System.FilePath ((</>))
 
 -- Import all OpenGL libraries qualified, for pedagogical reasons
 import qualified Data.Vinyl as V
-import           Data.Vinyl ((:::), (=:), (<+>))
+import           Data.Vinyl ((=:), (<+>))
+import Data.Vinyl.Universe ((:::), SField(..))
 import qualified Graphics.Rendering.OpenGL as GL
 import qualified Graphics.UI.GLFW as GLFW
 import           Graphics.Rendering.OpenGL (($=))
@@ -76,7 +77,7 @@ data Resources = Resources { shaderProgram :: U.ShaderProgram
                            , elementBuffer :: GL.BufferObject
                            }
 
-transformM :: Int -> Int -> Double -> V.PlainRec '[MVP]
+transformM :: Int -> Int -> Double -> V.PlainFieldRec '[MVP]
 transformM width height t =
               mvp =: (projection L.!*! view L.!*! model L.!*! anim)
   where
@@ -90,10 +91,10 @@ transformM width height t =
 
 -- This does not result in the same face order as the C++ example.
 -- The first 4 vertices correspond to the right (positive X) face.
-vertices :: [V.PlainRec '[Pos]]
+vertices :: [V.PlainFieldRec '[Pos]]
 vertices = map (coord3d =:) $ L.V3 <$> [1, -1] <*> [1, -1] <*> [1, -1]
 
-colors :: [V.PlainRec '[Color]]
+colors :: [V.PlainFieldRec '[Color]]
 colors = map (v_color =:) $ L.V3 <$> [1, -1] <*> [1, -1] <*> [1, -1]  -- color space visualization
 
 -- Vertices for each triangle in CCW order
@@ -112,10 +113,14 @@ elements = [ L.V3 2 1 0 -- right
            , L.V3 7 1 3
            ]
 
+
 type Pos = "coord3d" ::: L.V3 GL.GLfloat
 type Color = "v_color" ::: L.V3 GL.GLfloat
 type MVP = "mvp" ::: L.M44 GL.GLfloat
 
-coord3d = V.Field :: Pos
-v_color = V.Field :: Color
-mvp = V.Field :: MVP
+coord3d  :: SField Pos
+coord3d = SField
+v_color :: SField Color
+v_color = SField
+mvp :: SField MVP
+mvp = SField

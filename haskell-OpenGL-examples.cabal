@@ -132,8 +132,8 @@ executable wiki-t5-vinyl
                       filepath >= 1.3 && < 1.4,
                       linear >= 1.3 && < 1.11,
                       distributive >= 0.3 && < 0.5,
-                      vinyl-gl >= 0.1 && < 0.2,
-                      vinyl >= 0.2 && < 0.3
+                      vinyl-gl >= 0.2 && < 0.3,
+                      vinyl >= 0.4 && < 0.5
   ghc-options:        -O2 -Wall
 
 executable wiki-t5-th
@@ -149,8 +149,8 @@ executable wiki-t5-th
                       filepath >= 1.3 && < 1.4,
                       linear >= 1.3 && < 1.11,
                       distributive >= 0.3 && < 0.5,
-                      vinyl-gl >= 0.1 && < 0.2,
-                      vinyl >= 0.2 && < 0.3,
+                      vinyl-gl >= 0.2 && < 0.3,
+                      vinyl >= 0.4 && < 0.5,
                       file-embed < 0.1
   ghc-options:        -O2 -Wall
 
