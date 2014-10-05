@@ -33,7 +33,7 @@ executable wiki-t2-vector
                       vector >= 0.9 && < 0.11,
                       bytestring >= 0.10 && < 0.11,
                       OpenGLRaw >= 1.4 && < 1.6,
-                      GLUtil >= 0.7 && < 0.8,
+                      GLUtil >= 0.7 && < 0.9,
                       filepath >= 1.3
   ghc-options:        -O2 -Wall
 
@@ -46,7 +46,7 @@ executable wiki-t2-vbo
                       OpenGL >= 2.8 && < 2.10,
                       bytestring >= 0.10 && < 0.11,
                       OpenGLRaw >= 1.4 && < 1.6,
-                      GLUtil >= 0.7 && < 0.8,
+                      GLUtil >= 0.7 && < 0.9,
                       filepath >= 1.3
   ghc-options:        -O2 -Wall
 
@@ -59,7 +59,7 @@ executable wiki-t3-separate
                       OpenGL >= 2.8 && < 2.10,
                       bytestring >= 0.10 && < 0.11,
                       OpenGLRaw >= 1.4 && < 1.6,
-                      GLUtil >= 0.7 && < 0.8,
+                      GLUtil >= 0.7 && < 0.9,
                       filepath >= 1.3
   ghc-options:        -O2 -Wall
 
@@ -72,7 +72,7 @@ executable wiki-t3-interleaved
                       OpenGL >= 2.8 && < 2.10,
                       bytestring >= 0.10 && < 0.11,
                       OpenGLRaw >= 1.4 && < 1.6,
-                      GLUtil >= 0.7 && < 0.8,
+                      GLUtil >= 0.7 && < 0.9,
                       filepath >= 1.3
   ghc-options:        -O2 -Wall
 
@@ -85,7 +85,7 @@ executable wiki-t3-linear
                       OpenGL >= 2.8 && < 2.10,
                       bytestring >= 0.10 && < 0.11,
                       OpenGLRaw >= 1.4 && < 1.6,
-                      GLUtil >= 0.7 && < 0.8,
+                      GLUtil >= 0.7 && < 0.9,
                       filepath >= 1.3 && < 1.4,
                       linear >= 1.3 && < 1.11
   ghc-options:        -O2 -Wall
@@ -99,7 +99,7 @@ executable wiki-t4-linear
                       OpenGL >= 2.8 && < 2.10,
                       bytestring >= 0.10 && < 0.11,
                       OpenGLRaw >= 1.4 && < 1.6,
-                      GLUtil >= 0.7 && < 0.8,
+                      GLUtil >= 0.7 && < 0.9,
                       filepath >= 1.3 && < 1.4,
                       linear >= 1.3 && < 1.11
   ghc-options:        -O2 -Wall
@@ -113,7 +113,7 @@ executable wiki-t5-glutil
                       OpenGL >= 2.8 && < 2.10,
                       bytestring >= 0.10 && < 0.11,
                       OpenGLRaw >= 1.4 && < 1.6,
-                      GLUtil >= 0.7 && < 0.8,
+                      GLUtil >= 0.7 && < 0.9,
                       filepath >= 1.3 && < 1.4,
                       linear >= 1.3 && < 1.11,
                       distributive >= 0.3 && < 0.5
@@ -128,7 +128,7 @@ executable wiki-t5-vinyl
                       OpenGL >= 2.8 && < 2.10,
                       bytestring >= 0.10 && < 0.11,
                       OpenGLRaw >= 1.4 && < 1.6,
-                      GLUtil >= 0.7 && < 0.8,
+                      GLUtil >= 0.7 && < 0.9,
                       filepath >= 1.3 && < 1.4,
                       linear >= 1.3 && < 1.11,
                       distributive >= 0.3 && < 0.5,
@@ -145,7 +145,7 @@ executable wiki-t5-th
                       OpenGL >= 2.8 && < 2.10,
                       bytestring >= 0.10 && < 0.11,
                       OpenGLRaw >= 1.4 && < 1.6,
-                      GLUtil >= 0.7 && < 0.8,
+                      GLUtil >= 0.7 && < 0.9,
                       filepath >= 1.3 && < 1.4,
                       linear >= 1.3 && < 1.11,
                       distributive >= 0.3 && < 0.5,
