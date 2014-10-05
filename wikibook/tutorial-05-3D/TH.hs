@@ -13,7 +13,6 @@ module Main where
 import           Control.Applicative
 import qualified Data.ByteString as BS
 import           Data.FileEmbed (embedFile)
-import           System.FilePath ((</>))
 
 -- Import all OpenGL libraries qualified, for pedagogical reasons
 import qualified Data.Vinyl as V
@@ -40,7 +39,7 @@ main = do
 
 vSrc, fSrc :: BS.ByteString
 -- TH arguments need to be literal strings, or defined in another module
--- In real code, the latter would be better to avoid platform-dependent '/' 
+-- In real code, the latter would be better to avoid platform-dependent '/'
 vSrc = $(embedFile $ "wikibook/tutorial-05-3D/cube.v.glsl")
 fSrc = $(embedFile $ "wikibook/tutorial-05-3D/cube.f.glsl")
 
