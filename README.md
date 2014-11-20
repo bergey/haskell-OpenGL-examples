@@ -19,16 +19,6 @@ Haskell wrapper over OpenGL:
 All examples use [GLFW-b][] for windowing.  There are a few helper
 functions in `src/Util` which are used in all the examples.
 
-I've otherwise tried to avoid such functions, to make it easier to
-pick any example and see what is going on.  Most functions I'd want
-are provided by `GLUtil` anyway, and the point of the "-modern"
-examples is to show the use of the OpenGL bindings without those
-wrappers.
-
-To some extent it's also possible to mix and match these approaches.
-One can use custom shaders with the `gl_Modelview` matrix, or
-`drawArrays` with the fixed-function pipeline.
-
 If you are using these examples and find something missing or
 difficult to understand, please open an issue.  Pull requests are also
 welcome.
