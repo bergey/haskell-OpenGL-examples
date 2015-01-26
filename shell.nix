@@ -1,14 +1,15 @@
-{ pkgs ? import <nixpkgs> {}, haskellPackages ? pkgs.haskellPackages }:
+{ pkgs ? import <nixpkgs> {}, haskellPackages ? pkgs.haskellngPackages }:
 
 let 
   hs = haskellPackages.override {
-        extension = self: super: rec {
+        overrides = self: super: rec {
           hsPkg = pkg: version: self.callPackage "/home/bergey/code/nixHaskellVersioned/${pkg}/${version}.nix" {};
-          vinylGl = hsPkg "vinyl-gl" "0.2.1";
-          linear = hsPkg "linear" "1.15.1";
-          currentPkg = self.callPackage ./. {};
+          # required, not in Nix
+          # version pins
+          test-framework-quickcheck2 = pkgs.haskell-ng.lib.dontCheck super.test-framework-quickcheck2;
+          # HEAD packages
+          # self
+          thisPackage = self.callPackage ./. {};
       };
     };
-    in pkgs.lib.overrideDerivation hs.currentPkg (attrs: {
-        buildInputs = [hs.cabalInstall ] ++ attrs.buildInputs;
- })
+  in hs.thisPackage.env
