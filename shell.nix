@@ -7,6 +7,8 @@ let
           # required, not in Nix
           # version pins
           test-framework-quickcheck2 = pkgs.haskell-ng.lib.dontCheck super.test-framework-quickcheck2;
+          singletons = hsPkg "singletons" "1.1";
+          th-desugar = hsPkg "th-desugar" "1.5";
           # HEAD packages
           # self
           thisPackage = self.callPackage ./. {};
