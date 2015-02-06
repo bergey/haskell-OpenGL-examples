@@ -134,7 +134,7 @@ executable wiki-t5-vinyl
                       distributive >= 0.3 && < 0.5,
                       vinyl-gl >= 0.3 && < 0.4,
                       vinyl >= 0.5.1 && < 0.6,
-                      singletons >= 1.0 && < 1.1
+                      singletons >= 1.0 && < 1.2
   ghc-options:        -O2 -Wall
 
 executable wiki-t5-th
