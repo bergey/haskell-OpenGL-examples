@@ -15,7 +15,6 @@ import           System.FilePath ((</>))
 -- Import all OpenGL libraries qualified, for pedagogical reasons
 import qualified Data.Vinyl as V
 import           Data.Vinyl ((=:), (<+>))
--- import Data.Vinyl.Universe ((:::), SField(..))
 import Data.Vinyl.Derived (SField(..))
 import qualified Graphics.Rendering.OpenGL as GL
 import qualified Graphics.UI.GLFW as GLFW
