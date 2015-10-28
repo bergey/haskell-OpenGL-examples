@@ -19,7 +19,7 @@ executable wiki-t1-modern
   build-depends:       base >= 4 && < 5,
                        GLFW-b == 1.*,
                        OpenGL >= 2.8 && < 2.14,
-                       vector >= 0.9 && < 0.11,
+                       vector >= 0.9 && < 0.12,
                        bytestring >= 0.10 && < 0.11
   ghc-options:         -O2 -Wall
 
@@ -30,7 +30,7 @@ executable wiki-t2-vector
   build-depends:      base >= 4 && < 5,
                       GLFW-b == 1.*,
                       OpenGL >= 2.8 && < 2.14,
-                      vector >= 0.9 && < 0.11,
+                      vector >= 0.9 && < 0.12,
                       bytestring >= 0.10 && < 0.11,
                       OpenGLRaw >= 1.4 && < 2.7,
                       GLUtil >= 0.7 && < 0.9,
@@ -134,7 +134,7 @@ executable wiki-t5-vinyl
                       distributive >= 0.3 && < 0.5,
                       vinyl-gl >= 0.3 && < 0.4,
                       vinyl >= 0.5.1 && < 0.6,
-                      singletons >= 1.0 && < 1.2
+                      singletons >= 1.0 && < 2.1
   ghc-options:        -O2 -Wall
 
 executable wiki-t5-th
@@ -172,7 +172,7 @@ executable glfw-modern
   build-depends:      base >= 4 && < 5,
                       GLFW-b == 1.*,
                       OpenGL >= 2.8 && < 2.14,
-                      vector >= 0.9 && < 0.11,
+                      vector >= 0.9 && < 0.12,
                       bytestring >= 0.10 && < 0.11,
                       OpenGLRaw >= 1.4 && < 2.7
   ghc-options:        -O2 -Wall
