@@ -11,13 +11,14 @@ packages:
 extra-deps:
   - GLFW-b-1.4.7.3
   - GLUtil-0.8.7
-  - OpenGL-2.10.0.1
-  - OpenGLRaw-2.0.0.0
+  - OpenGL-2.13.1.0
+  - OpenGLRaw-2.6.0.0
   - vinyl-gl-0.3.0.1
   - GLURaw-1.4.0.2
   - bindings-GLFW-3.1.1.4
   - hpp-0.1.0.0
   - vinyl-0.5.1
+  - ObjectName-1.1.0.0
 
 # Override default flag values for local packages and extra-deps
 flags: {}
