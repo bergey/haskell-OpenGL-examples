@@ -12,3 +12,6 @@ cabal.config
 *.cmake
 CMakeFiles
 c.exe
+/Setup
+/.stack-work/
+\#*
