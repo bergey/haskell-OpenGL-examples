@@ -83,7 +83,7 @@ transformM :: Int -> Int -> Double -> L.M44 GL.GLfloat
 transformM width height t = projection L.!*! view L.!*! model L.!*! anim where
   angle      = realToFrac t * pi/4
   anim       = L.mkTransformation (L.axisAngle (L.V3 0 1 0) angle) L.zero
-  model      = L.mkTransformationMat L.eye3 $ L.V3 0 0 (-4)
+  model      = L.mkTransformationMat L.identity $ L.V3 0 0 (-4)
   view       = U.camMatrix cam
   cam        = U.tilt (-30) . U.dolly (L.V3 0 2 0) $ U.fpsCamera
   projection = U.projectionMatrix (pi/4) aspect 0.1 10
