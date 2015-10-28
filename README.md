@@ -32,6 +32,10 @@ tutorial examples.  Take a look at
 [the .cabal file](/haskell-OpenGL-examples.cabal) to see how the
 executables are named.
 
+On Ubuntu, you will need (at least) the following packages installed:
+
+`libgl-dev libxcursor-dev libxi-dev libglu-dev`
+
 ### Resources
 
 Vladimir Lopatin has a [good set of tutorials](https://github.com/madjestic/Haskell-OpenGL-Tutorial/) on modern OpenGL in Haskell.  They have more detail on interactions with [GLFW-b][] and do not use [GLUtil][] or [vinyl-gl][].
