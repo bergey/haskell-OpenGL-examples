@@ -1,3 +1,6 @@
+I am not maintaining this project.  If you would like to adopt it,
+please drop me a line, and I'll hand it over.
+
 ## Comparative examples of Modern OpenGL in Haskell
 
 These are the examples I wish I had when I started learning OpenGL.
