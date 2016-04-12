@@ -11,7 +11,7 @@ import           System.Exit (exitFailure)
 -- Import all OpenGL libraries qualified, for pedagogical reasons
 import qualified Graphics.Rendering.OpenGL as GL
 import           Graphics.Rendering.OpenGL (($=))
-import           Graphics.Rendering.OpenGL.Raw.Core31 (glUniformMatrix3fv, glUniformMatrix4fv)
+import           Graphics.GL.Core31 (glUniformMatrix3fv, glUniformMatrix4fv)
 import qualified Graphics.UI.GLFW as GLFW
 
 -- Local modules
