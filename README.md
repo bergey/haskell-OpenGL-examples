@@ -30,14 +30,16 @@ The example programs:
 * `wikibook` ports a few examples from the excellent [OpenGL Wikibook](https://en.wikibooks.org/wiki/OpenGL_Programming)
 * `glfw` (2D rotating triangle, based on the [example][] that ships with [GLFW][])
 
-Running `cabal install` in this directory will build all of the
-tutorial examples.  Take a look at
-[the .cabal file](/haskell-OpenGL-examples.cabal) to see how the
-executables are named.
+I recommend building all of the examples as follows (the first line is Ubuntu-specific):
 
-On Ubuntu, you will need (at least) the following packages installed:
+``` bash
+apt-get install libgl-dev libxcursor-dev libxi-dev libglu-dev
+cabal sandbox init
+cabal install
+```
 
-`libgl-dev libxcursor-dev libxi-dev libglu-dev`
+Take a look at [the .cabal file](/haskell-OpenGL-examples.cabal) to
+see how the executables are named.
 
 ### Resources
 
